@@ -1,16 +1,24 @@
+const ignorePatterns = [
+	"<rootDir>/.github/",
+	"<rootDir>/node_modules/",
+	"<rootDir>/__tests__/config",
+	"<rootDir>/__tests__/mocks",
+	"<rootDir>/__tests__/(.*).mock.(js|ts)"
+];
+
 module.exports = {
-  preset: "ts-jest",
-  // testEnvironment: 'node',
-  testEnvironment: "jsdom",
-  verbose: false,
-  testMatch: ["**/src/**/*.test.(ts|js)?(x)"],
-  transform: {
-    "^.+\\.(js|jsx)$": "babel-jest",
-    "^.+\\.(ts|tsx)$": "ts-jest",
-  },
-  moduleDirectories: ['node_modules', 'src'],
-  moduleNameMapper: {
-    '\\.(css|less)$': '<rootDir>/styleMock.js',
-  },
-  resolver: '<rootDir>/myResolver.js',
+	testEnvironment: "jsdom",
+	setupFilesAfterEnv: ["<rootDir>/__tests__/config/jest.setup.ts"],
+	coveragePathIgnorePatterns: ignorePatterns,
+	transformIgnorePatterns: ["/node_modules/", "^.+\\.module\\.(css|sass|scss)$"],
+	testPathIgnorePatterns: ignorePatterns,
+	moduleNameMapper: {
+		"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+		"^@/(.*)$": "<rootDir>/src/$1",
+		"^@components/(.*)$": "<rootDir>/src/components/$1",
+		"^@api/(.*)$": "<rootDir>/src/api/$1",
+		"^@pages/(.*)$": "<rootDir>/src/pages/$1",
+		"^__tests__/(.*)$": "<rootDir>/__tests__/$1",
+		"^public/(.*)$": "<rootDir>/public/$1"
+	}
 };

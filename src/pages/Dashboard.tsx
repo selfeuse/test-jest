@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { IGlaciereDashboard } from "../data/IGlaciere";
-import GridDashboard from "../components/Grids/GridDashboard/GridDashboard";
+import GridDashboard from "@components/Grids/GridDashboard/GridDashboard";
 
-import { getCountByStatus } from "api/GlaciereAPI";
+import { getCountByStatus } from "@api/GlaciereAPI";
 
 export default function Dashboard() {
   const [statusData, setStatusData] = useState<IGlaciereDashboard[]>([]);
