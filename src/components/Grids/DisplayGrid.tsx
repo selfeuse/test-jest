@@ -33,7 +33,7 @@ export default function DisplayGrid({
     <div>
       <div className="ag-theme-alpine">
         <button onClick={onBtnExport}>Download CSV export file</button>
-        <div>
+        <div data-testid="DisplayGrid-component">
           <AgGridReact
             rowData={rowData}
             pagination={true}
